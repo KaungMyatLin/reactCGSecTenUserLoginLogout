@@ -4,6 +4,7 @@ import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 import { useContext } from 'react/cjs/react.production.min';
 import AuthContext from '../../contextStore/auth-context';
+import Input from '../UI/Input/Input';
 
 const emailReducer = (latestStSnp, action) => {
   if (action.type === 'strInp_em') {
@@ -71,7 +72,7 @@ const Login = (props) => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
+        {/* <div
           className={`${classes.control} ${
             emailS.isValid === false ? classes.invalid : ''
           }`}
@@ -84,8 +85,10 @@ const Login = (props) => {
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
           />
-        </div>
-        <div
+        </div> */}
+        <Input id="email" label="E-mail" type="email" isValid={emailIsValid} Value={emailS.value} onChange={emailChangeHandler} onBlur={validateEmailHandler}/>
+        <Input id="password" label="Password" type="password" isValid={pwIsValid} Value={pwS.value} onChange={passwordChangeHandler} onBlur={validatePasswordHandler}/>
+        {/* <div
           className={`${classes.control} ${
             pwS.isValid === false ? classes.invalid : ''
           }`}
@@ -98,7 +101,7 @@ const Login = (props) => {
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
           />
-        </div>
+        </div> */}
         <div className={classes.actions}>
           <Button type="submit" className={classes.btn} disabled={!formIsValid}>
             Login
